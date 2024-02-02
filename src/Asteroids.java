@@ -94,7 +94,7 @@ public class Asteroids {
     private static class PlayerMover implements Runnable {
         public PlayerMover() {
             velocitystep = 0.01;
-            rotatestep = 0.01;
+            rotatestep = 0.015;
         }
 
         public void run() {
@@ -102,6 +102,9 @@ public class Asteroids {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {}
+
+                if (p1velocity > 0) p1velocity -= 0.005;
+                if (p1velocity > 3) p1velocity = 3;
 
                 if (upPressed) p1velocity += velocitystep;
                 if (downPressed) p1velocity -= velocitystep;
@@ -133,7 +136,7 @@ public class Asteroids {
     private static class Player2Mover implements Runnable {
         public Player2Mover() {
             velocitystep = 0.01;
-            rotatestep = 0.01;
+            rotatestep = 0.015;
         }
 
         public void run() {
@@ -141,6 +144,9 @@ public class Asteroids {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {}
+
+                if (p2velocity > 0) p2velocity -= 0.005;
+                if (p2velocity > 3) p2velocity = 3;
 
                 if (wPressed) p2velocity += velocitystep;
                 if (sPressed) p2velocity -= velocitystep;
